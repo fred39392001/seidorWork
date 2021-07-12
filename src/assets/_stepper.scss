@@ -1,0 +1,53 @@
+.stepper {
+  counter-reset:step;
+}
+.stepper li {
+  list-style-type: none;
+  float:left;
+  width: 50%;
+  position:relative;
+  text-align:center;
+}
+.stepper li:before {
+  content:counter(step);
+  counter-increment: step;
+  width: 30px;
+  height: 30px;
+  line-height:30px;
+  border:1px solid #ddd;
+  display:block;
+  text-align:center;
+  margin:0 auto 10px auto;
+  border-radius:50%;
+  background-color: #fff;
+}
+
+.stepper li.done:before {
+font-family: "Font Awesome 5 Free";
+font-weight: 900;
+content: "\f00c";
+
+}
+
+.stepper li:after {
+  content:"";
+  position:absolute;
+  width: 100%;
+  height:1px;
+  background-color: #ddd;
+  top: 15px;
+  left: -50%;
+  z-index:-1;
+}
+.stepper li:first-child:after {
+  content:none;
+}
+.stepper li.active {
+  color: $primary;
+}
+.stepper li.active:before {
+  border-color: $primary;
+}
+.stepper li.active + li:after {
+  background-color: $primary;
+}
