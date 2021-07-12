@@ -3,8 +3,10 @@
     <div class="wrap container w-75 py-5">
       <div class="text-center">
         <ul class="stepper mr-4">
-          <li class="done text-center">Buyer Information</li>
-          <li class="done">Payment</li>
+          <li class="done text-center" v-if="isEN">Buyer Information</li>
+          <li class="done text-center" v-if="isCN">購買者資訊</li>
+          <li class="done" v-if="isEN">Payment</li>
+          <li class="done" v-if="isCN">付款</li>
         </ul>
       </div>
       <div class="container">
@@ -25,8 +27,11 @@
             <p v-if="isCN">{{ orderdata.message.zh_CN }}</p>
           </div>
           <div class="col-12 d-flex justify-content-center mt-3 px-0">
-              <router-link class="btn btn-outline-primary" to="/">
+              <router-link class="btn btn-outline-primary" to="/" v-if="isEN">
                 Continue Shopping<i class="fas fa-chevron-right pl-2"></i>
+              </router-link>
+              <router-link class="btn btn-outline-primary" to="/" v-if="isCN">
+                繼續購物<i class="fas fa-chevron-right pl-2"></i>
               </router-link>
             </div>
         </div>
